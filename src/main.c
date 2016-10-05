@@ -50,6 +50,8 @@ int main(void)
 {
   int i = 0;
   int button = 0;
+  int button1 = 0;
+  int button2 = 0;
   // Uloha 1
      GPIO_InitTypeDef struktura;
      RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
@@ -102,13 +104,37 @@ int main(void)
 	 	 // button = GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_13);
 
 	  // Uloha 3_1
-	  	  for(i = 0;i < 100000;i++){
+	  	 /* for(i = 0;i < 100000;i++){
 	  	   	 if(i < 50000){
 	  	   		GPIO_Write(GPIOA, 0b1 << 5);
 	  	   		  }
 	  	   		  else
 	  	   			GPIO_Write(GPIOA, 0b0 << 5);
-	  	   }
+	  	   }*/
+
+	  //uloha 3_2
+	  	  /*button  = GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_13);
+
+	  	    	  if(button){
+
+	  	    		  GPIO_Write(GPIOA, 0b0 << 5);
+	  	    		}
+	  	    	  else
+	  	    	  {
+	  	    		  GPIO_Write(GPIOA, 0b1 << 5);
+
+
+
+	  	    	  }*/
+	  //uloha 3_3
+	  button = button1;
+	  	  button1  = GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_13);
+
+	  	  if ((button == 1)&&(button1 == 0))
+	  	      	        	{
+
+	  		  GPIO_ToggleBits(GPIOA,GPIO_Pin_5);
+	  	      	        	}
 	i++;
   }
   return 0;
