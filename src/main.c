@@ -49,8 +49,9 @@ SOFTWARE.
 int main(void)
 {
   int i = 0;
+  int button = 0;
   // Uloha 1
-     GPIO_InitTypeDef struktura;
+     /*GPIO_InitTypeDef struktura;
      RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
      struktura.GPIO_Mode  = GPIO_Mode_OUT;
      struktura.GPIO_OType = GPIO_OType_PP ;
@@ -64,7 +65,16 @@ int main(void)
      GPIO_ToggleBits(GPIOA,GPIO_Pin_5);
      GPIO_ToggleBits(GPIOA,GPIO_Pin_5);
      GPIO_SetBits(GPIOA, GPIO_Pin_5);
-     GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+     GPIO_ResetBits(GPIOA, GPIO_Pin_5);*/
+
+  //Uloha 2
+   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+   GPIO_InitTypeDef struktura1;
+   struktura1.GPIO_Mode = GPIO_Mode_IN ;
+   struktura1.GPIO_OType = GPIO_OType_PP;
+   struktura1.GPIO_PuPd = GPIO_PuPd_NOPULL;
+   struktura1.GPIO_Pin = GPIO_Pin_13;
+   GPIO_Init(GPIOC, &struktura1);
   /**
   *  IMPORTANT NOTE!
   *  See the <system_*.c> file and how/if the SystemInit() function updates 
@@ -88,6 +98,8 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
+	  //Uloha 2
+	 	  button = GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_13);
 	i++;
   }
   return 0;
