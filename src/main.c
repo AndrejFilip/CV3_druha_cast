@@ -49,7 +49,22 @@ SOFTWARE.
 int main(void)
 {
   int i = 0;
+  // Uloha 1
+     GPIO_InitTypeDef struktura;
+     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+     struktura.GPIO_Mode  = GPIO_Mode_OUT;
+     struktura.GPIO_OType = GPIO_OType_PP ;
+     struktura.GPIO_PuPd = GPIO_PuPd_UP ;
+     struktura.GPIO_Speed = GPIO_Speed_40MHz ;
+     struktura.GPIO_Pin = GPIO_Pin_5;
+     GPIO_Init(GPIOA, &struktura);
 
+     GPIO_Write(GPIOA, 0b1 << 5);
+     GPIO_Write(GPIOA, 0b0 << 5);
+     GPIO_ToggleBits(GPIOA,GPIO_Pin_5);
+     GPIO_ToggleBits(GPIOA,GPIO_Pin_5);
+     GPIO_SetBits(GPIOA, GPIO_Pin_5);
+     GPIO_ResetBits(GPIOA, GPIO_Pin_5);
   /**
   *  IMPORTANT NOTE!
   *  See the <system_*.c> file and how/if the SystemInit() function updates 
